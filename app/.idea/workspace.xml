@@ -74,7 +74,7 @@
       <command value="gradle compileTestJava" />
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.StringSchemaTest.validatorRequiredTest">
+  <component name="RunManager" selected="Gradle.NumSchemaTest">
     <configuration name="BaseSchemaTest.validatorBaseSchemaShaopeTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -197,10 +197,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.NumSchemaTest" />
         <item itemvalue="Gradle.StringSchemaTest.validatorRequiredTest" />
         <item itemvalue="Gradle.BaseSchemaTest.validatorBaseSchemaShaopeTest" />
         <item itemvalue="Gradle.MapSchemaTest" />
-        <item itemvalue="Gradle.NumSchemaTest" />
         <item itemvalue="Gradle.ValidatorRequiredTest.validatorNumberSchemaTest" />
       </list>
     </recent_temporary>

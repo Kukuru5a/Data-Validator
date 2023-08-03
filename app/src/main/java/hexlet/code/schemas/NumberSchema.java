@@ -5,7 +5,7 @@ import java.util.function.Predicate;
 public class NumberSchema extends BaseSchema {
     public final NumberSchema required() {
         this.isRequired = true;
-        Predicate<Object> required = s -> (s != null && (int) s > 0);
+        Predicate<Object> required = s -> (s != null && s instanceof Integer && (int) s > 0);
         super.addPred(required);
         return this;
     }
@@ -23,6 +23,6 @@ public class NumberSchema extends BaseSchema {
     }
     @Override
     boolean isInvalid(Object obj) {
-        return !(obj instanceof Integer);
+        return !(obj instanceof Integer) || (obj == null);
     }
 }
