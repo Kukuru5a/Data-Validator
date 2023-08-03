@@ -1,16 +1,22 @@
-make install:
+install:
 	./gradlew install
 
-make clean:
+clean:
 	./gradlew clean
 
-make test:
+compTest:
+	./gradlew compileTestJava
+
+
+test:
 	./gradlew test
 
-make run-dist:
+run-dist:
 	./build/install/app/bin/app
 
-make lint:
+lint:
 	./gradlew checkstyleMain
 
+update-deps:
+	./gradlew useLatestVersions
 
