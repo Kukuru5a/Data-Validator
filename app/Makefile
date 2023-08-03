@@ -7,6 +7,8 @@ clean:
 compTest:
 	./gradlew compileTestJava
 
+report:
+	./gradlew jacocoTestReport
 
 test:
 	./gradlew test
