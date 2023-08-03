@@ -6,7 +6,7 @@ import java.util.function.Predicate;
 public class MapSchema extends BaseSchema {
     public final MapSchema required() {
         this.isRequired = true;
-        Predicate<Object> required = s -> s instanceof Map;
+        Predicate<Object> required = s -> s instanceof Map && s != null;
         super.addPred(required);
         return this;
     }

@@ -1,10 +1,11 @@
 package hexlet.code.schemas;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Predicate;
 
 public abstract class BaseSchema {
-    private final LinkedList<Predicate<Object>> conditions = new LinkedList<>();
+    private final List<Predicate<Object>> conditions = new ArrayList<>();
     protected boolean isRequired;
 
     public final boolean isValid(Object obj) {
@@ -20,7 +21,7 @@ public abstract class BaseSchema {
     }
 
     public final void addPred(Predicate<Object> pred) {
-        conditions.addFirst(pred);
+        conditions.add(pred);
     }
     abstract boolean isInvalid(Object obj);
 }
