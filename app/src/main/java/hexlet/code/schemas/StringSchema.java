@@ -24,7 +24,7 @@ public class StringSchema extends BaseSchema {
     }
     @Override
     public boolean isInvalid(Object obj) {
-        return !(obj instanceof String) || ((String) obj).isEmpty();
+        return !(obj instanceof String) || ((String) obj).isEmpty() && obj == null;
     }
 
 }

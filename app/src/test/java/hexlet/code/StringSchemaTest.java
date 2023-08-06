@@ -13,6 +13,7 @@ public class StringSchemaTest {
         StringSchema stringSchema = validator.string();
         String testFirstString = "what does the fox say";
         String testSecondString = "moon";
+        String testThirdString = null;
 
         assertTrue(stringSchema.isValid(testFirstString));
         assertTrue(stringSchema.isValid(testSecondString));
@@ -25,6 +26,8 @@ public class StringSchemaTest {
 
         stringSchema.contains("whatthe");
         assertFalse(stringSchema.isValid(testFirstString));
+
+        stringSchema.contains("wh");
     }
 
     @Test

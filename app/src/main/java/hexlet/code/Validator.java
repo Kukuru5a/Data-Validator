@@ -10,7 +10,7 @@ public class Validator {
     }
 
     public static NumberSchema number() {
-        return new NumberSchema();
+        return new NumberSchema().condition();
     }
 
     public static MapSchema map() {

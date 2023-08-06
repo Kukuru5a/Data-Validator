@@ -7,13 +7,18 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class NumSchemaTest {
+
     @Test
     public void validatorNumberSchemaTest() {
         Validator val = new Validator();
         NumberSchema nSch = val.number();
         int firstInt = 5;
         int secInt = -10;
+        String num = "a";
+        String num2 = null;
 
+        assertFalse(nSch.isValid(num));
+        assertTrue(nSch.isValid(num2));
         assertTrue(nSch.isValid(firstInt));
         assertTrue(nSch.isValid(secInt));
 
@@ -23,10 +28,15 @@ public class NumSchemaTest {
     public void validatorRequiredTest() {
         Validator val = new Validator();
         NumberSchema nSch = val.number();
+        String num2 = null;
+        String num = "a";
+
 
         assertTrue(nSch.isValid(null));
 
         nSch.required();
+        assertFalse(nSch.isValid(num2));
+        assertFalse(nSch.isValid(num));
         assertFalse(nSch.isValid(null));
 
     }
