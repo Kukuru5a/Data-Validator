@@ -4,23 +4,20 @@ import java.util.Map;
 import java.util.function.Predicate;
 
 public class MapSchema extends BaseSchema {
-    public final MapSchema required() {
+    public final void required() {
         this.isRequired = true;
-        Predicate<Object> required = s -> s instanceof Map && s != null;
+        Predicate<Object> required = s -> s instanceof Map;
         super.addPred(required);
-        return this;
     }
 
-    public final MapSchema sizeof(int value) {
+    public final void sizeof(int value) {
         Predicate<Object> sizeof = s -> ((Map<?, ?>) s).size() == value;
         super.addPred(sizeof);
-        return this;
     }
 
-    public final MapSchema shape(Map<String, BaseSchema> schema) {
+    public final void shape(Map<String, BaseSchema> schema) {
         Predicate<Object> shape = s -> shapeIsRequired(schema, (Map<?, ?>) s);
         super.addPred(shape);
-        return this;
     }
 
     private boolean shapeIsRequired(Map<String, BaseSchema> schema, Map<?, ?> map) {

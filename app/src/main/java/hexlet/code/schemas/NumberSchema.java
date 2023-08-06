@@ -10,11 +10,10 @@ public class NumberSchema extends BaseSchema {
         return this;
     }
 
-    public final NumberSchema required() {
+    public final void required() {
         this.isRequired = true;
         Predicate<Object> required = s -> (s != null && (int) s != 0) && s instanceof Integer;
         super.addPred(required);
-        return this;
     }
 
     public final NumberSchema positive() {
@@ -23,10 +22,9 @@ public class NumberSchema extends BaseSchema {
         return this;
     }
 
-    public final NumberSchema range(int beg, int fin) {
+    public final void range(int beg, int fin) {
         Predicate<Object> range = s -> (int) s >= beg && (int) s <= fin;
         super.addPred(range);
-        return this;
     }
 
     @Override
