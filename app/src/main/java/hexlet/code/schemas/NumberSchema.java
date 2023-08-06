@@ -3,8 +3,6 @@ package hexlet.code.schemas;
 import java.util.function.Predicate;
 
 public class NumberSchema extends BaseSchema {
-    private boolean condition = null instanceof Integer;
-
     public final NumberSchema condition() {
         this.isRequired = true;
         Predicate<Object> condition = s -> !(s instanceof String);
