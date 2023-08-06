@@ -2,28 +2,28 @@ package hexlet.code.schemas;
 
 import java.util.function.Predicate;
 
-public class NumberSchema extends BaseSchema {
-    public final NumberSchema condition() {
+public final class NumberSchema extends BaseSchema {
+    public NumberSchema condition() {
         this.isRequired = true;
         Predicate<Object> condition = s -> !(s instanceof String);
         super.addPred(condition);
         return this;
     }
 
-    public final NumberSchema required() {
+    public NumberSchema required() {
         this.isRequired = true;
         Predicate<Object> required = s -> (s != null && (int) s != 0) && s instanceof Integer;
         super.addPred(required);
         return this;
     }
 
-    public final NumberSchema positive() {
+    public NumberSchema positive() {
         Predicate<Object> positive =  s -> s == null || (int) s >= 0;
         super.addPred(positive);
         return this;
     }
 
-    public final NumberSchema range(int beg, int fin) {
+    public NumberSchema range(int beg, int fin) {
         Predicate<Object> range = s -> (int) s >= beg && (int) s <= fin;
         super.addPred(range);
         return this;

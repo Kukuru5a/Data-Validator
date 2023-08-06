@@ -3,21 +3,21 @@ package hexlet.code.schemas;
 import java.util.Map;
 import java.util.function.Predicate;
 
-public class MapSchema extends BaseSchema {
-    public final MapSchema required() {
+public final class MapSchema extends BaseSchema {
+    public MapSchema required() {
         this.isRequired = true;
         Predicate<Object> required = s -> s instanceof Map;
         super.addPred(required);
         return this;
     }
 
-    public final MapSchema sizeof(int value) {
+    public MapSchema sizeof(int value) {
         Predicate<Object> sizeof = s -> ((Map<?, ?>) s).size() == value;
         super.addPred(sizeof);
         return this;
     }
 
-    public final MapSchema shape(Map<String, BaseSchema> schema) {
+    public MapSchema shape(Map<String, BaseSchema> schema) {
         Predicate<Object> shape = s -> shapeIsRequired(schema, (Map<?, ?>) s);
         super.addPred(shape);
         return this;
