@@ -4,8 +4,11 @@ package hexlet.code.schemas;
 import java.util.function.Predicate;
 
 public final class StringSchema extends BaseSchema {
+    public StringSchema() {
+        this.addPred(v -> v == null || v instanceof String);
+    }
+
     public StringSchema required() {
-        this.isRequired = true;
         Predicate<Object> required =  s -> s instanceof String && s != null && !s.equals("");
         super.addPred(required);
         return this;
@@ -21,10 +24,6 @@ public final class StringSchema extends BaseSchema {
         Predicate<Object> minLength = s -> s.toString().length() >= number;
         super.addPred(minLength);
         return this;
-    }
-    @Override
-    public boolean isInvalid(Object obj) {
-        return !(obj instanceof String);
     }
 
 }

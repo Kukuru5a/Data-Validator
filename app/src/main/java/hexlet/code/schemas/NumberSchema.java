@@ -3,16 +3,12 @@ package hexlet.code.schemas;
 import java.util.function.Predicate;
 
 public final class NumberSchema extends BaseSchema {
-    public NumberSchema condition() {
-        this.isRequired = true;
-        Predicate<Object> condition = s -> !(s instanceof String);
-        super.addPred(condition);
-        return this;
-    }
 
+    public NumberSchema() {
+        this.addPred(v -> v == null || v instanceof Integer);
+    }
     public NumberSchema required() {
-        this.isRequired = true;
-        Predicate<Object> required = s -> (s != null && (int) s != 0) && s instanceof Integer;
+        Predicate<Object> required = s -> (s != null) && s instanceof Integer;
         super.addPred(required);
         return this;
     }
@@ -29,8 +25,4 @@ public final class NumberSchema extends BaseSchema {
         return this;
     }
 
-    @Override
-    boolean isInvalid(Object obj) {
-        return !(obj instanceof Integer);
-    }
 }

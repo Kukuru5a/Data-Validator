@@ -4,9 +4,13 @@ import java.util.Map;
 import java.util.function.Predicate;
 
 public final class MapSchema extends BaseSchema {
+
+    public MapSchema() {
+        this.addPred(v -> v == null || v instanceof Map);
+    }
+
     public MapSchema required() {
-        this.isRequired = true;
-        Predicate<Object> required = s -> s instanceof Map;
+        Predicate<Object> required = s -> s instanceof Map && s != null;
         super.addPred(required);
         return this;
     }
@@ -18,12 +22,12 @@ public final class MapSchema extends BaseSchema {
     }
 
     public MapSchema shape(Map<String, BaseSchema> schema) {
-        Predicate<Object> shape = s -> shapeIsRequired(schema, (Map<?, ?>) s);
+        Predicate<Object> shape = s -> validateShape(schema, (Map<?, ?>) s);
         super.addPred(shape);
         return this;
     }
 
-    private boolean shapeIsRequired(Map<String, BaseSchema> schema, Map<?, ?> map) {
+    private boolean validateShape(Map<String, BaseSchema> schema, Map<?, ?> map) {
         for (Map.Entry<String, BaseSchema> mapEntry : schema.entrySet()) {
             String key = mapEntry.getKey();
             if (!map.containsKey(key) || !mapEntry.getValue().isValid(map.get(key))) {
@@ -33,8 +37,4 @@ public final class MapSchema extends BaseSchema {
         return true;
     }
 
-    @Override
-    boolean isInvalid(Object obj) {
-        return !(obj instanceof Map);
-    }
 }

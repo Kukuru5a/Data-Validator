@@ -12,15 +12,11 @@ public class NumSchemaTest {
     public void validatorNumberSchemaTest() {
         Validator val = new Validator();
         NumberSchema nSch = val.number();
-        int firstInt = 5;
-        int secInt = -10;
-        String num = "a";
-        String num2 = null;
 
-        assertFalse(nSch.isValid(num));
-        assertTrue(nSch.isValid(num2));
-        assertTrue(nSch.isValid(firstInt));
-        assertTrue(nSch.isValid(secInt));
+        assertFalse(nSch.isValid("a"));
+        assertTrue(nSch.isValid(null));
+        assertTrue(nSch.isValid(5));
+        assertTrue(nSch.isValid(-10));
 
     }
 
@@ -28,15 +24,11 @@ public class NumSchemaTest {
     public void validatorRequiredTest() {
         Validator val = new Validator();
         NumberSchema nSch = val.number();
-        String num2 = null;
-        String num = "a";
-
 
         assertTrue(nSch.isValid(null));
 
         nSch.required();
-        assertFalse(nSch.isValid(num2));
-        assertFalse(nSch.isValid(num));
+        assertFalse(nSch.isValid("num"));
         assertFalse(nSch.isValid(null));
 
     }
@@ -44,30 +36,24 @@ public class NumSchemaTest {
     public void validatorInOutOfRangeTest() {
         Validator val = new Validator();
         NumberSchema nSch = val.number();
-        int rangeBeginning = 6;
-        int rangeFinish = 11;
-        int intInRange = 7; // between 6 & 11
-        int intPutOfRange = 12; // between 6 & 11
 
-        nSch.range(rangeBeginning, rangeFinish);
+        nSch.range(6, 11);
 
-        assertTrue(nSch.isValid(intInRange));
-        assertFalse(nSch.isValid(intPutOfRange));
+        assertTrue(nSch.isValid(7));
+        assertFalse(nSch.isValid(12));
     }
 
     @Test
     public void validatorPositiveTest() {
         Validator val = new Validator();
         NumberSchema nSch = val.number();
-        int firstInt = 5;
-        int secInt = -10;
 
-        assertTrue(nSch.isValid(firstInt));
-        assertTrue(nSch.isValid(secInt));
+        assertTrue(nSch.isValid(5));
+        assertTrue(nSch.isValid(-10));
 
         nSch.positive();
 
-        assertFalse(nSch.isValid(secInt));
-        assertTrue(nSch.isValid(firstInt));
+        assertFalse(nSch.isValid(-10));
+        assertTrue(nSch.isValid(5));
     }
 }
