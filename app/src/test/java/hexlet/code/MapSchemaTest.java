@@ -26,7 +26,6 @@ public class MapSchemaTest {
     void validatoRequiredTest() {
         Validator val = new Validator();
         MapSchema mSch = val.map();
-        Map<String, String> map = new HashMap<>();
 
         assertTrue(mSch.isValid(null));
         mSch.required();
